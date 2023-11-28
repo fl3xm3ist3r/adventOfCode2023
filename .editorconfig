@@ -1,0 +1,21 @@
+
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+max_line_length = 120
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,vb}]
+charset = utf-8-bom
+
+# Code Quality Rules
+dotnet_diagnostic.CA1849.severity = warning # CA1849: Call async methods when in an async method
+dotnet_diagnostic.CA1851.severity = warning # CA1851: Possible multiple enumerations of 'IEnumerable' collection
+
+dotnet_diagnostic.CA1304.severity = none # CA1304: Specify CultureInfo
+dotnet_diagnostic.CA1305.severity = none # CA1305: Specify IFormatProvider
