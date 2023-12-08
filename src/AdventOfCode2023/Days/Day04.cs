@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace AdventOfCode2023.Days;
+﻿namespace AdventOfCode2023.Days;
 
 public class Day04 : DayBase
 {

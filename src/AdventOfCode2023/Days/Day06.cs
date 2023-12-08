@@ -1,7 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using Spectre.Console;
-
-namespace AdventOfCode2023.Days;
+﻿namespace AdventOfCode2023.Days;
 
 public class Day06 : DayBase
 {
