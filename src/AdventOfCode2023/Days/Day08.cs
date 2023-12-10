@@ -7,17 +7,44 @@ public class Day08 : DayBase
     {
         var input = GetInput(Input.Value);
 
-        long total = 0;
+        var instructions = input[0].ToCharArray();
+        Dictionary<string, Direction> list = input[1].Split($"{Environment.NewLine}").Select(ToDirection).ToDictionary(e => e.Key, e => e.Value);
+        var startNode = list.GetValueOrDefault("AAA")!;
+
+        var total = FollowPath(instructions, list, startNode, "ZZZ");
+
+        return new ValueTask<string>(total.ToString());
+    }
+
+    // 15746133679061
+    public override ValueTask<string> Solve_2()
+    {
+        var input = GetInput(Input.Value);
 
         var instructions = input[0].ToCharArray();
-
         Dictionary<string, Direction> list = input[1].Split($"{Environment.NewLine}").Select(ToDirection).ToDictionary(e => e.Key, e => e.Value);
 
-        var nextElement = list.GetValueOrDefault("AAA")!;
+        var nodesLoops = list.Where(e => e.Key[^1] == 'A').Select(e => e.Value).Select(node => FollowPath(instructions, list, node, "Z", true)).ToList();
 
+        var result = CalculateLeastCommonMultipleOfNumberList(nodesLoops);
+
+        return new ValueTask<string>(result.ToString());
+    }
+
+    private static List<string> GetInput(string input)
+    {
+        return input.Split($"{Environment.NewLine}{Environment.NewLine}").ToList();
+    }
+
+    private static long FollowPath(char[] instructions, Dictionary<string, Direction> list, Direction startValue, string endCondition, bool part2 = false)
+    {
+        var steps = 0;
+
+        var nextElement = startValue;
         for (int i = 0; i < instructions.Length;)
         {
-            if (nextElement.Key == "ZZZ")
+            if (nextElement.Key == endCondition && !part2 ||
+                nextElement.Key[^1].ToString() == endCondition && part2)
             {
                 break;
             }
@@ -32,63 +59,42 @@ public class Day08 : DayBase
             }
 
             i++;
-            total++;
+            steps++;
             if (i == instructions.Length)
             {
                 i = 0;
             }
         }
 
-        return new ValueTask<string>(total.ToString());
+        return steps;
     }
 
-    // no result after 220 minutes of runtime
-    public override ValueTask<string> Solve_2()
+    private static long CalculateLeastCommonMultipleOfNumberList(List<long> numbers)
     {
-        var input = GetInput(Input.Value);
+        long lcm = numbers[0];
 
-        long total = 0;
-
-        var instructions = input[0].ToCharArray();
-
-        Dictionary<string, Direction> list = input[1].Split($"{Environment.NewLine}").Select(ToDirection).ToDictionary(e => e.Key, e => e.Value);
-
-        var nodes = list.Where(e => e.Key[^1] == 'A').Select(e => e.Value).ToList();
-
-        for (int i = 0; i < instructions.Length;)
+        for (int i = 1; i < numbers.Count; i++)
         {
-            if (nodes.Where(e => e.Key[^1] == 'Z').Count() == nodes.Count)
-            {
-                break;
-            }
-
-            var instruction = instructions[i];
-            for (int x = 0; x < nodes.Count; x++)
-            {
-                if (instruction == 'L')
-                {
-                    nodes[x] = list.GetValueOrDefault(nodes[x].Left)!;
-                }
-                else if (instruction == 'R')
-                {
-                    nodes[x] = list.GetValueOrDefault(nodes[x].Right)!;
-                }
-            }
-
-            i++;
-            total++;
-            if (i == instructions.Length)
-            {
-                i = 0;
-            }
+            lcm = LeastCommonMultiple(lcm, numbers[i]);
         }
 
-        return new ValueTask<string>(total.ToString());
+        return lcm;
     }
 
-    private static List<string> GetInput(string input)
+    private static long LeastCommonMultiple(long a, long b)
     {
-        return input.Split($"{Environment.NewLine}{Environment.NewLine}").ToList();
+        return (a / GreatestCommonMultiple(a, b)) * b;
+    }
+
+    private static long GreatestCommonMultiple(long a, long b)
+    {
+        while (b != 0)
+        {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 
     private KeyValuePair<string, Direction> ToDirection(string input)
