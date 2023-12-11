@@ -133,10 +133,8 @@ public class Day10 : DayBase
         for (int y = 0; y < map.Count; y++)
         {
             var line = string.Join("", map[y]);
-            line = Regex.Replace(Regex.Replace(line, "F-*7|L-*J", string.Empty), "F-*J|L-*7", "|");
-
+            line = Regex.Replace(line, "F-*J|L-*7", "|");
             map[y] = line.ToCharArray().ToList();
-
 
             var pairCount = 0;
             for (int x = 0; x < map[y].Count; x++)
