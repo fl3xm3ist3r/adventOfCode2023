@@ -25,13 +25,13 @@ public abstract class DayBase : BaseDay
 
     private static string RemoveLastLineIfEmpty(string text)
     {
-        string[] lines = text.Split('\n');
+        string[] lines = text.Split($"{Environment.NewLine}");
 
         if (lines.Length > 0 && string.IsNullOrWhiteSpace(lines[^1]))
         {
             Array.Resize(ref lines, lines.Length - 1);
         }
 
-        return string.Join("\n", lines);
+        return string.Join($"{Environment.NewLine}", lines);
     }
 }

@@ -102,7 +102,7 @@ public class Day08 : DayBase
         var key = input.Split(" = ")[0];
 
         var tmp = input.Split(" = ")[1].Trim('(', ')').Split(", ");
-        var direction = new Direction(key, tmp[0], tmp[1].Replace(")\r", ""));
+        var direction = new Direction(key, tmp[0], tmp[1]);
 
         return new KeyValuePair<string, Direction>(key, direction); ;
     }
