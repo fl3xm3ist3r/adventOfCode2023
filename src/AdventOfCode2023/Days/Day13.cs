@@ -36,7 +36,8 @@ public class Day13 : DayBase
     }
 
 
-    // Work from current index outwards and check each time if all bigger pairs are valid, else throw
+    // Idea on how to detect mirrors by @Rootix (https://github.com/rootix)
+    // Reference: https://github.com/rootix/AdventOfCode/blob/main/2023/src/AdventOfCode2023/Days/Day13.cs#L21
     private static int GetMirroringIndex(List<string> maze)
     {
         for(var row = 0; row < maze.Count - 1; row++)
@@ -92,7 +93,8 @@ public class Day13 : DayBase
         throw new Exception("You surely need a hug ʕ⁠っ⁠•⁠ᴥ⁠•⁠ʔ⁠っ");
     }
 
-    // Work from current index outwards and check each time if all bigger pairs are valid and one of them is off by one char, else throw
+    // Idea on how to detect mirrors by @Rootix (https://github.com/rootix)
+    // Reference: https://github.com/rootix/AdventOfCode/blob/main/2023/src/AdventOfCode2023/Days/Day13.cs#L21
     private static int GetMirrorIndexOfByOneChar(List<string> maze)
     {
         for (var row = 0; row < maze.Count - 1; row++)
