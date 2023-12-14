@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace AdventOfCode2023.Days;
+﻿namespace AdventOfCode2023.Days;
 
 public class Day12 : DayBase
 {
@@ -27,32 +25,32 @@ public class Day12 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //7857
-    public override ValueTask<string> Solve_2()
-    {
-        var input = GetInput(Input.Value);
-        var total = 0;
+    //
+    //public override ValueTask<string> Solve_2()
+    //{
+    //    var input = GetInput(Input.Value);
+    //    var total = 0;
 
-        var count = 0;
-        foreach (var line in input)
-        {
-            var groups = MultiplyString(line.Split(' ')[1], ',').Split(',').Select(int.Parse).ToList();
-            var possibleCombinations = GenerateCombinations(MultiplyString(line.Split(' ')[0], '?'));
+    //    var count = 0;
+    //    foreach (var line in input)
+    //    {
+    //        var groups = MultiplyString(line.Split(' ')[1], ',').Split(',').Select(int.Parse).ToList();
+    //        var possibleCombinations = GenerateCombinations(MultiplyString(line.Split(' ')[0], '?'));
 
-            foreach (var possibleCombination in possibleCombinations)
-            {
-                if (IsValid(possibleCombination, groups))
-                {
-                    total++;
-                }
-            }
+    //        foreach (var possibleCombination in possibleCombinations)
+    //        {
+    //            if (IsValid(possibleCombination, groups))
+    //            {
+    //                total++;
+    //            }
+    //        }
 
-            count++;
-            Console.WriteLine(count.ToString());
-        }
+    //        count++;
+    //        Console.WriteLine(count.ToString());
+    //    }
 
-        return new ValueTask<string>(total.ToString());
-    }
+    //    return new ValueTask<string>(total.ToString());
+    //}
 
     private static List<string> GetInput(string input)
     {
