@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace AdventOfCode2023.Days;
+﻿namespace AdventOfCode2023.Days;
 
 public class Day19 : DayBase
 {

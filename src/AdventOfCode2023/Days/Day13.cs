@@ -37,7 +37,7 @@ public class Day13 : DayBase
 
 
     // Idea on how to detect mirrors by @Rootix (https://github.com/rootix)
-    // Reference: https://github.com/rootix/AdventOfCode/blob/main/2023/src/AdventOfCode2023/Days/Day13.cs#L21
+    // Reference: https://github.com/rootix/AdventOfCode/commit/fb911386b97880a0d13319432334519432aebf54#diff-7d6e89b83a11bf7f5da6295a64bd5a94c4f000dad2e66cdeffda5e7ca2b712d2 (Line 21)
     private static int GetMirroringIndex(List<string> maze)
     {
         for(var row = 0; row < maze.Count - 1; row++)

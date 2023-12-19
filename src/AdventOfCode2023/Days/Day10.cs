@@ -125,7 +125,8 @@ public class Day10 : DayBase
         }
     }
 
-    // Solution by @Rootix (https://github.com/rootix)
+    // Idea on how to detect if 0 is inside or not @Rootix (https://github.com/rootix)
+    // Reference: https://github.com/rootix/AdventOfCode/commit/abe45a26ed94761003a9b3daa1c4f10394a22065#diff-4303474bde68ebca12a70cd25c6526b4ee2867f92e2e063508b8e19ad1b77ffe (Line 137)
     private static int CalculateEnclosedFields(List<List<char>> map)
     {
         var totalEnclosed = 0;
