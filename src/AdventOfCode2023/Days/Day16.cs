@@ -7,7 +7,7 @@ public class Day16 : DayBase
     {
         var input = GetInput(Input.Value).Select(l => l.ToCharArray().ToList()).ToList();
 
-        var result = MoveThoughMaze((0, -1, Direction.RIGHT), input);
+        var result = MoveThroughMaze((0, -1, Direction.RIGHT), input);
 
         return new ValueTask<string>(result.ToString());
     }
@@ -21,14 +21,14 @@ public class Day16 : DayBase
 
         for(int x = 0; x < input[0].Count; x++)
         {
-            result.Add(MoveThoughMaze((-1, x, Direction.DOWN), input));
-            result.Add(MoveThoughMaze((input.Count, x, Direction.UP), input));
+            result.Add(MoveThroughMaze((-1, x, Direction.DOWN), input));
+            result.Add(MoveThroughMaze((input.Count, x, Direction.UP), input));
         }
 
         for (int y = 0; y < input.Count; y++)
         {
-            result.Add(MoveThoughMaze((y, -1, Direction.RIGHT), input));
-            result.Add(MoveThoughMaze((y, input[0].Count, Direction.LEFT), input));
+            result.Add(MoveThroughMaze((y, -1, Direction.RIGHT), input));
+            result.Add(MoveThroughMaze((y, input[0].Count, Direction.LEFT), input));
         }
 
         return new ValueTask<string>(result.Max().ToString());
@@ -39,7 +39,7 @@ public class Day16 : DayBase
         return input.Split($"{Environment.NewLine}").ToList();
     }
 
-    private static int MoveThoughMaze((int Y, int X, Direction Direction) startPath, List<List<char>> input)
+    private static int MoveThroughMaze((int Y, int X, Direction Direction) startPath, List<List<char>> input)
     {
         var pointCache = new List<(int Y, int X, Direction Direction)>();
 
@@ -185,7 +185,6 @@ public class Day16 : DayBase
 
         return move;
     }
-
 
     enum Direction
     {
