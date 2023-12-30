@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Days;
 
 public class Day02 : DayBase
 {
-    //2317
+    // 2317
     public override ValueTask<string> Solve_1()
     {
         var games = GetInput(Input.Value);
@@ -14,7 +14,7 @@ public class Day02 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //74804
+    // 74804
     public override ValueTask<string> Solve_2()
     {
         var games = GetInput(Input.Value);

@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Days;
 
 public class Day10 : DayBase
 {
-    //6682
+    // 6682
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Select(e => e.ToCharArray().ToList()).ToList();
@@ -16,7 +16,7 @@ public class Day10 : DayBase
         return new ValueTask<string>(result.ToString());
     }
 
-    //353
+    // 353
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value).Select(e => e.ToCharArray().ToList()).ToList();
@@ -125,8 +125,11 @@ public class Day10 : DayBase
         }
     }
 
-    // Idea on how to detect if 0 is inside or not @Rootix (https://github.com/rootix)
+    /* ------ Disclaimer ------ */
+    // Idea on how to detect if 0 is inside the Form or not is by @Rootix (https://github.com/rootix)
     // Reference: https://github.com/rootix/AdventOfCode/commit/abe45a26ed94761003a9b3daa1c4f10394a22065#diff-4303474bde68ebca12a70cd25c6526b4ee2867f92e2e063508b8e19ad1b77ffe (Line 137)
+    /* ------------------------ */
+
     private static int CalculateEnclosedFields(List<List<char>> map)
     {
         var totalEnclosed = 0;

@@ -2,7 +2,7 @@
 
 public class Day11 : DayBase
 {
-    //9693756
+    // 9693756
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Select(line => line.ToCharArray().ToList()).ToList();
@@ -30,7 +30,7 @@ public class Day11 : DayBase
         return new ValueTask<string>(totalDistances.ToString());
     }
 
-    //717878258016
+    // 717878258016
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value).Select(line => line.ToCharArray().ToList()).ToList();
@@ -57,7 +57,6 @@ public class Day11 : DayBase
 
         return new ValueTask<string>(totalDistances.ToString());
     }
-
 
     private static List<string> GetInput(string input)
     {

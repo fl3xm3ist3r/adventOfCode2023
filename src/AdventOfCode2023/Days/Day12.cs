@@ -1,14 +1,8 @@
 ﻿namespace AdventOfCode2023.Days;
 
-/* ----- Disclaimer ------ */
-// Even after several hours and the hints from @Shoedler (https://github.com/shoedler) to use recursion and memoization I couldn't figure out the solution for the second part by myself.
-// So I decided to recode @Rootix's (https://github.com/rootix) solution and understand how it works
-// Reference: https://github.com/rootix/AdventOfCode/commit/57d4320fe87e63444bbedcf0b8b1dc76270eabfd#diff-b73df4600111de4991e27386320fb4db21afe12a42c75f66548104589df7944f
-/* ------------------------- */
-
 public class Day12 : DayBase
 {
-    //7857
+    // 7857
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -31,9 +25,15 @@ public class Day12 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    private readonly Dictionary<string, long> _memoizationCache = [];
+    /* ------ Disclaimer ------ */
+    // Even after several hours and the hints from @Shoedler (https://github.com/shoedler) to use recursion and memoization I couldn't figure out the solution for the second part by myself.
+    // So I decided to recode @Rootix's (https://github.com/rootix) solution and understand how it works
+    // Reference: https://github.com/rootix/AdventOfCode/commit/57d4320fe87e63444bbedcf0b8b1dc76270eabfd#diff-b73df4600111de4991e27386320fb4db21afe12a42c75f66548104589df7944f
+    /* ------------------------ */
 
-    //28606137449920
+    // 28606137449920
+
+    private readonly Dictionary<string, long> _memoizationCache = [];
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value);
@@ -55,8 +55,6 @@ public class Day12 : DayBase
     {
         return input.Split($"{Environment.NewLine}").ToList();
     }
-
-    /* --------------- Part 1 --------------- */
 
     private static void GenerateCombinationsRecursive(char[] baseChars, int index, List<string> combinations)
     {
@@ -98,8 +96,6 @@ public class Day12 : DayBase
 
         return true;
     }
-
-    /* --------------- Part 2 --------------- */
 
     private static List<string> GenerateCombinations(string baseString)
     {

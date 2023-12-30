@@ -2,7 +2,7 @@
 
 public class Day20 : DayBase
 {
-    //788081152
+    // 788081152
     public override ValueTask<string> Solve_1()
     {
         var modules = GetInput(Input.Value).Select(ToBaseModule).ToList();
@@ -56,7 +56,7 @@ public class Day20 : DayBase
         return new ValueTask<string>(result.ToString());
     }
 
-    //224602011344203
+    // 224602011344203
     public override ValueTask<string> Solve_2()
     {
         var modules = GetInput(Input.Value).Select(ToBaseModule).ToList();
@@ -122,8 +122,10 @@ public class Day20 : DayBase
             }
         }
 
+        /* ------ Disclaimer ------ */
         // Hint that lcm (kgv) works on this problem was found in @Lulukas (https://github.com/lulukas) code
         // Reference: https://github.com/lulukas/advent-of-code/commit/7d0ab4e65871e6c1ad06c977828d6cab08f3173f#diff-3f0f3e835409819e17ec067c8fc7ac5837524c379fa5f758395f76d850306011 (Line 134)
+        /* ------------------------ */
 
         //since all numbers are already prime numbers we can just multiply them with each other
         var result = lcmResulte.Aggregate((a, b) => a * b);

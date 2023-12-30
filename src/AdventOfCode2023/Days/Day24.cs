@@ -2,7 +2,7 @@
 
 public class Day24 : DayBase
 {
-    //20336
+    // 20336
     public override ValueTask<string> Solve_1()
     {
         var lines = GetInput(Input.Value).Select(l => ToLine(l.Replace(" @ ", ", ").Split(", "))).ToArray();
@@ -35,39 +35,6 @@ public class Day24 : DayBase
 
         return new ValueTask<string>(result.ToString());
     }
-
-    //public override ValueTask<string> Solve_2()
-    //{
-    //    var lines = GetInput(Input.Value).Select(l => ToLine(l.Replace(" @ ", ", ").Split(", "))).ToArray();
-
-    //    double min = 200000000000000;
-    //    double max = 400000000000000;
-
-    //    var result = 0;
-
-    //    for (int i = 0; i < lines.Length - 1; i++)
-    //    {
-    //        var currentLine = lines[i];
-    //        for (int j = i + 1; j < lines.Length; j++)
-    //        {
-    //            var tmpLine = lines[j];
-
-    //            var (x, y) = BerechneSchnittpunkt(currentLine.GeradenGleichung, tmpLine.GeradenGleichung);
-
-    //            var isInPastOfCurrent = IsInPast(currentLine, x, y);
-    //            var isInPastOfTmp = IsInPast(tmpLine, x, y);
-
-    //            if (min <= x && x <= max &&
-    //               min <= y && y <= max &&
-    //               !isInPastOfCurrent && !isInPastOfTmp)
-    //            {
-    //                result++;
-    //            }
-    //        }
-    //    }
-
-    //    return new ValueTask<string>(result.ToString());
-    //}
 
     private static List<string> GetInput(string input)
     {

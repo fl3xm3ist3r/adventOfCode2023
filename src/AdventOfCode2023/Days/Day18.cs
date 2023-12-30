@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Days;
 
 public class Day18 : DayBase
 {
-    //46394
+    // 46394
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Select(l => ToPath(l)).ToList();
@@ -37,13 +37,6 @@ public class Day18 : DayBase
             }
         }
 
-        /*---- print map ----*/
-        //
-        //foreach (var line in map)
-        //{
-        //    Console.WriteLine(string.Join(',', line).Replace(",", ""));
-        //}
-
         var innerHashTagCount = InnerHashTagCount(map);
 
         var outerHashTagCount = map.Sum(l => l.Count(c => c == '#'));
@@ -53,48 +46,64 @@ public class Day18 : DayBase
         return new ValueTask<string>(result.ToString());
     }
 
-    //memory out of bounds
+    // 201398068194715
+    public override ValueTask<string> Solve_2()
+    {
+        var input = GetInput(Input.Value).Select(l => ToPath(l, true)).ToList();
 
-    //public override ValueTask<string> Solve_2()
-    //{
-    //    var input = GetInput(Input.Value).Select(l => ToPath(l, true)).ToList();
+        var edges = new List<(long X, long Y)>();
+        (long X, long Y) current = (0, 0);
+        long totalSteps = 0;
 
-    //    var (map, startPoint) = InitMap(input);
-    //    var currentCoordinate = startPoint;
-    //    map[currentCoordinate.Y][currentCoordinate.X] = '#';
+        foreach (var path in input)
+        {
+            switch (path.direction)
+            {
+                case Direction.DOWN:
+                    current.Y += path.stepCount;
+                    break;
+                case Direction.UP:
+                    current.Y -= path.stepCount;
+                    break;
+                case Direction.LEFT:
+                    current.X -= path.stepCount;
+                    break;
+                case Direction.RIGHT:
+                    current.X += path.stepCount;
+                    break;
+            }
 
-    //    foreach (var path in input)
-    //    {
-    //        for (int i = 0; i < path.stepCount; i++)
-    //        {
-    //            switch (path.direction)
-    //            {
-    //                case Direction.DOWN:
-    //                    currentCoordinate.Y++;
-    //                    break;
-    //                case Direction.UP:
-    //                    currentCoordinate.Y--;
-    //                    break;
-    //                case Direction.LEFT:
-    //                    currentCoordinate.X--;
-    //                    break;
-    //                case Direction.RIGHT:
-    //                    currentCoordinate.X++;
-    //                    break;
-    //            }
+            totalSteps += path.stepCount;
+            edges.Add(current);
+        }
 
-    //            map[currentCoordinate.Y][currentCoordinate.X] = '#';
-    //        }
-    //    }
+        var tmp = edges[^3];
 
-    //    var innerHashTagCount = InnerHashTagCount(map);
+        /* ------ Disclaimer ------ */
+        // Sadly, my first attempt to calculate all tiles inside the form didn't worked anymore :(
+        // After several hours of trying, I decided to take @Rootix's (https://github.com/rootix) calculation Solution
+        // Reference: https://github.com/rootix/AdventOfCode/commit/7ff83766055def8c325f7d1019267760152eca93#diff-2201dde4a0be914497e1fb104105fd12b47b53d17526a69ad53a5fb13b6cbe84 (Line 32)
+        /* ------------------------ */
 
-    //    var outerHashTagCount = map.Sum(l => l.Count(c => c == '#'));
+        // Shoelace Theorem
+        // https://en.wikipedia.org/wiki/Shoelace_formula
+        double A = 0;
+        for (var i = 0; i < edges.Count; i++)
+        {
+            var nextIndex = (i + 1) % edges.Count;
+            A += edges[i].X * edges[nextIndex].Y - edges[i].Y * edges[nextIndex].X;
+        }
+        A = A / 2;
 
-    //    var result = outerHashTagCount + innerHashTagCount;
+        // Pick's Theorem
+        // https://en.wikipedia.org/wiki/Pick%27s_theorem
+        // i = A - b/2 + 1
+        var insideTiles = Math.Round(A - totalSteps / 2 + 1);
+        var outsideTiles = totalSteps;
+        var result = insideTiles + outsideTiles;
 
-    //    return new ValueTask<string>(result.ToString());
-    //}
+        return new ValueTask<string>(result.ToString());
+    }
 
     private static List<string> GetInput(string input)
     {
@@ -224,7 +233,7 @@ public class Day18 : DayBase
         var height = minHeight * -1 + maxHeight;
         var width = minWidth * -1 + maxWidth;
 
-            var result = new List<List<char>>();
+        var result = new List<List<char>>();
         for(int y = 0; y < height + 1; y++)
         {
             var tmp = new List<char>();

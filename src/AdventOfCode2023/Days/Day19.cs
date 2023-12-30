@@ -2,7 +2,7 @@
 
 public class Day19 : DayBase
 {
-    //348378
+    // 348378
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -40,7 +40,7 @@ public class Day19 : DayBase
         return new ValueTask<string>(result.ToString());
     }
 
-    //121158073425385
+    // 121158073425385
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value);

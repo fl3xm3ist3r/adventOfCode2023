@@ -2,7 +2,7 @@
 
 public class Day07 : DayBase
 {
-    //250946742
+    // 250946742
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -38,7 +38,7 @@ public class Day07 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //251824095
+    // 251824095
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value);
@@ -134,7 +134,6 @@ public class Day07 : DayBase
                 HandType.OnePair
         };
     }
-
 
     private static int CompareHands(string firstHand, string secondHand, string cardOrder)
     {

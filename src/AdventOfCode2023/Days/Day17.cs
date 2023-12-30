@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Days;
 
 public class Day17 : DayBase
 {
-    //1110
+    // 1110
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Select(l => l.ToCharArray().Select(c => int.Parse(c.ToString())).ToList()).ToList();
@@ -14,7 +14,8 @@ public class Day17 : DayBase
         return new ValueTask<string>(result.ToString());
     }
 
-    //1294 (takes approximately 8 minutes and 30 seconds)
+    // 1294
+    // Takes approximately 8 minutes and 30 seconds
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value).Select(l => l.ToCharArray().Select(c => int.Parse(c.ToString())).ToList()).ToList();

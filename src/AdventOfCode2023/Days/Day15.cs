@@ -2,7 +2,7 @@
 
 public class Day15 : DayBase
 {
-    //511215
+    // 511215
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Split(",").ToList();
@@ -16,7 +16,7 @@ public class Day15 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //236057
+    // 236057
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value).Split(",").ToList();

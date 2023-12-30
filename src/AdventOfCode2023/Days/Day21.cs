@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Days;
 
 public class Day21 : DayBase
 {
-    //3737
+    // 3737
     public override ValueTask<string> Solve_1()
     {
         var map = GetInput(Input.Value).Select(l => l.ToCharArray().ToList()).ToList();

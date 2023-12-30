@@ -2,7 +2,7 @@
 
 public class Day13 : DayBase
 {
-    //31739
+    // 31739
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value).Select(e => e.Split($"{Environment.NewLine}").ToList()).ToList();
@@ -16,7 +16,7 @@ public class Day13 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //31539
+    // 31539
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value).Select(e => e.Split($"{Environment.NewLine}").ToList()).ToList();
@@ -35,9 +35,11 @@ public class Day13 : DayBase
         return input.Split($"{Environment.NewLine}{Environment.NewLine}").ToList();
     }
 
-
+    /* ------ Disclaimer ------ */
     // Idea on how to detect mirrors by @Rootix (https://github.com/rootix)
     // Reference: https://github.com/rootix/AdventOfCode/commit/fb911386b97880a0d13319432334519432aebf54#diff-7d6e89b83a11bf7f5da6295a64bd5a94c4f000dad2e66cdeffda5e7ca2b712d2 (Line 21)
+    /* ------------------------- */
+
     private static int GetMirroringIndex(List<string> maze)
     {
         for(var row = 0; row < maze.Count - 1; row++)

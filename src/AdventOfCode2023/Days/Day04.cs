@@ -2,7 +2,7 @@
 
 public class Day04 : DayBase
 {
-    //20407
+    // 20407
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -38,7 +38,7 @@ public class Day04 : DayBase
         return new ValueTask<string>(total.ToString());
     }
 
-    //23806951
+    // 23806951
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value);
@@ -60,7 +60,6 @@ public class Day04 : DayBase
             occurrences[i] = 1;
         }
 
-
         for (var i = 0; i < cards.Count; i++)
         {
             var winners = cards[i].randomNumbers.Count(number => cards[i].winningNumbers.Contains(number));
@@ -74,12 +73,10 @@ public class Day04 : DayBase
         return new ValueTask<string>(occurrences.Sum().ToString());
     }
 
-
     private static List<string> GetInput(string input)
     {
         return input.Split($"{Environment.NewLine}").ToList();
     }
-
 
     //-------------------------------------------------------
     // this would technically work but it is just way to slow and would take ages...

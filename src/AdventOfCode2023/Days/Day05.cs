@@ -2,7 +2,7 @@
 
 public class Day05 : DayBase
 {
-    //240320250
+    // 240320250
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -34,7 +34,7 @@ public class Day05 : DayBase
         return new ValueTask<string>(locations.Min().ToString());
     }
 
-    //28580589
+    // 28580589
     public override ValueTask<string> Solve_2()
     {
         var input = GetInput(Input.Value);

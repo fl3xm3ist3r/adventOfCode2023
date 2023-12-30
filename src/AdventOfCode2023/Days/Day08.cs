@@ -2,7 +2,7 @@
 
 public class Day08 : DayBase
 {
-    //17873
+    // 17873
     public override ValueTask<string> Solve_1()
     {
         var input = GetInput(Input.Value);
@@ -94,6 +94,7 @@ public class Day08 : DayBase
             b = a % b;
             a = temp;
         }
+
         return a;
     }
 
